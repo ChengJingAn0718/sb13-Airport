@@ -73,7 +73,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
         sceneStart: () => {
             baseObject.current.className = 'aniObject'
 
-            timerList[0] = setTimeout(activeBtnFunc, 4000);
+            timerList[0] = setTimeout(activeBtnFunc, 1500);
 
             audioList.bodyAudio0.src = prePathUrl() + "sounds/word/common_review0.mp3"
             audioList.bodyAudio1.src = prePathUrl() + "sounds/word/common_review.mp3"
@@ -249,6 +249,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
                         top: _baseGeo.top + 'px',
                     }}
                 >
+                    <BaseImage url='bg/bg_color.png' />
 
                     <div
                         style={{
