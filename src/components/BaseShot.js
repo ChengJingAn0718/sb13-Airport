@@ -1,13 +1,9 @@
 import { useRef, useEffect, useState, createContext } from "react";
 import App from "./App";
-import { isMobile, isIOS } from "react-device-detect";
 import "../stylesheets/styles.css";
 import loadSound from "../utils/loadSound"
-import { prePathUrl } from "./CommonFunctions";
 import { LoadingCircleBar } from "./CommonButtons"
 
-var oldBackgroundImage = 'SB_37_Stage_BG_2';
-var _isBackSoundPlaying = true;
 
 const animationColorList = [
     ['#51c9b5', '#cc55d9', '#f55185'],
@@ -18,21 +14,20 @@ const animationColorList = [
     ['#51c9b5', '#cc55d9', '#dfeb88']
 ]
 
-let titleAudio = new loadSound('intro/2');
 
 let clapAudio = new loadSound('clap', true);
-let backAudio = new loadSound('bMusic', true);
+let backAudio = new loadSound('bmusic', true);
 let yeahAudio = new loadSound('yeah', true);
 let buzzAudio = new loadSound('buzz', true);
 let tingAudio = new loadSound('ting', true);
 let wooAudio = new loadSound('woo', true);
-let replayAudio = new loadSound('replayAudio', true);
+let replayAudio = new loadSound('replayaudio', true);
 let successAudio = new loadSound('success', true);
 
-let bodyAudio0 = new loadSound('intro/2');
-let bodyAudio1 = new loadSound('intro/2');
-let bodyAudio2 = new loadSound('intro/2');
-let bodyAudio3 = new loadSound('intro/2');
+let bodyAudio0 = new loadSound('intro/intro2');
+let bodyAudio1 = new loadSound('intro/intro2');
+let bodyAudio2 = new loadSound('intro/intro2');
+let bodyAudio3 = new loadSound('intro/intro2');
 
 let commonAudio1 = new loadSound('common/common1');
 let commonAudio2 = new loadSound('common/common2');
@@ -45,7 +40,7 @@ Array.from(Array(10).keys()).map(value => {
     subAudioList.push(new loadSound('word/' + (value + 1)))
 })
 
-backAudio.volume = 0.12;
+backAudio.volume = 0.2;
 
 wooAudio.volume = 0.8;
 successAudio.volume = 0.4;
@@ -60,7 +55,6 @@ isGameStarted = true;
 var isOff = false;
 
 let audioList = {
-    titleAudio,
     replayAudio,
     clapAudio,
     backAudio,

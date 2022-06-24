@@ -130,7 +130,6 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, bgLoaded, _start
                             setTimeout(() => {
                                 _startTransition(3)
                                 setTimeout(() => {
-                                    audioList.wooAudio.play().catch(error => { });
                                     nextFunc()
                                 }, 300);
                             }, 2000);
@@ -166,11 +165,13 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc, bgLoaded, _start
 
             loadFunc()
 
+            setExtraVolume(audioList.bodyAudio1, 4)
+            setExtraVolume(audioList.bodyAudio2, 4)
+            setExtraVolume(audioList.bodyAudio3, 4)
+
             baseObject.current.className = 'aniObject'
             audioList.bodyAudio1.src = prePathUrl() + 'sounds/intro/intro2.mp3';
             audioList.bodyAudio2.src = prePathUrl() + 'sounds/intro/intro1.mp3';
-
-
 
             blackWhiteObject.current.style.transition = "0.5s"
             currentImage.current.style.transition = '0.5s'

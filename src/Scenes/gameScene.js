@@ -16,7 +16,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
 
     const baseObject = useRef();
     const blackWhiteObject = useRef();
-    const airPortRef = useRef();
+    const firstRef = useRef();
     const buttonRefs = useRef()
     const starRefs = Array.from({ length: 7 }, ref => useRef())
 
@@ -27,7 +27,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
     const parentRef = useRef()
 
     useEffect(() => {
-
+        setRepeatType(1)
 
 
         return () => {
@@ -41,6 +41,10 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
         },
         sceneStart: () => {
             parentRef.current.className = 'aniObject'
+
+            setExtraVolume(audioList.commonAudio2, 4)
+            setExtraVolume(audioList.commonAudio1, 4)
+
             setRepeatAudio(audioList.commonAudio2)
             setPrimaryAudio(audioList.bodyAudio1)
             setRepeatType(1)
@@ -53,6 +57,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
 
             blackWhiteObject.current.className = 'hideObject'
             buttonRefs.current.className = 'hideObject'
+
             audioList.bodyAudio1.src = prePathUrl() + "sounds/question/question1.mp3"
             audioList.bodyAudio2.src = prePathUrl() + "sounds/question/answer1.mp3"
 
@@ -74,7 +79,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
     const playZoomAnimation = () => {
         let imageNum = 0;
         blackWhiteObject.current.className = 'hideMask'
-        airPortRef.current.setClass('hideObject')
+        firstRef.current.setClass('hideObject')
 
         aniImageList[0].current.setClass('showObject')
         let imageShowInterval = setInterval(() => {
@@ -91,7 +96,6 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
     const showControlFunc = () => {
         if (stepCount < 6) {
             blackWhiteObject.current.style.WebkitMaskImage = 'url("' + prePathUrl() + 'images/questions/q' + (stepCount + 2) + '/mask.png")'
-            airPortRef.current.setUrl('questions/q' + (stepCount + 2) + '/q0.png');
 
             aniImageList.map((image, index) => {
                 if (index < 3)
@@ -108,7 +112,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
     }
 
     const returnBackground = () => {
-        airPortRef.current.setClass('show')
+        firstRef.current.setClass('show')
         buttonRefs.current.className = 'hide'
         aniImageList[3].current.setClass('hide')
         blackWhiteObject.current.className = 'show halfOpacity'
@@ -219,8 +223,8 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
 
 
                         <BaseImage
-                            ref={airPortRef}
-                            url={"questions/q1/q0.png"}
+                            ref={firstRef}
+                            url={"bg/airpot_bg.png"}
                         />
 
                         <div
@@ -231,8 +235,6 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
                                 , height: '100%',
                                 left: '0%',
                                 top: '0%',
-                                // WebkitMaskImage: 'url(prepathurl()+"images/questions/q2/mask.png")',
-                                // WebkitMaskImage: 'url(prePathUrl() + "images/questions/q2/mask.png")',
                                 WebkitMaskSize: '100% 100%',
                                 WebkitMaskRepeat: "no-repeat",
                                 background: 'black',
@@ -290,7 +292,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo, loadFunc }, ref) => 
                                         top: '-32%'
                                     }}
                                     draggable={false}
-                                    src={prePathUrl() + 'images/buttons/answer_button.svg'}
+                                    src={prePathUrl() + 'images/bg/answer_button.svg'}
                                 />
                             </div>
                         </div>

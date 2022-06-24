@@ -80,7 +80,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
 
             setRepeatAudio(audioList.commonAudio3)
             setRepeatType(2)
-
+            setExtraVolume(audioList.commonAudio3, 4)
 
             imageCount = 0;
             isEffectPassed = true;
@@ -99,12 +99,9 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
             baseObject.current.className = 'aniObject'
             timerList[1] = setTimeout(() => {
                 audioList.bodyAudio1.play().catch(error => { });
-                // timerList[2] = setTimeout(() => {
-                //     audioList.bodyAudio0.play().catch(error => { })
                 timerList[3] = setTimeout(() => {
                     audioList.commonAudio3.play().catch(error => { })
                     startRepeatAudio()
-                    // }, audioList.bodyAudio0.duration * 1000 + 300);
                 }, audioList.bodyAudio1.duration * 1000 + 1000);
             }, 2000);
 
@@ -155,7 +152,12 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
             ])
 
             setTimeout(() => {
-                audioList[clickedNum].play().catch(error => { });
+                setExtraVolume(audioList[clickedNum], 4)
+
+                setTimeout(() => {
+                    audioList[clickedNum].play().catch(error => { });
+                }, 50);
+
 
                 startRepeatAudio()
 

@@ -24,7 +24,15 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc }, ref) => {
         },
         sceneStart: () => {
             audioList.bodyAudio1.src = prePathUrl() + "sounds/common/middle.mp3"
-            setExtraVolume(audioList.bodyAudio1, 2)
+            setExtraVolume(audioList.bodyAudio1, 8)
+
+
+            setExtraVolume(audioList.clapAudio, 2)
+            setExtraVolume(audioList.yeahAudio, 2)
+            setExtraVolume(audioList.buzzAudio, 2)
+            setExtraVolume(audioList.tingAudio, 2)
+            setExtraVolume(audioList.successAudio, 2)
+
 
             parentRef.current.className = 'aniObject'
             spakleRef.current.className = 'excellentText'
@@ -41,7 +49,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, loadFunc }, ref) => {
 
         sceneEnd: () => {
             audioList.bodyAudio1.pause();
-            setExtraVolume(audioList.bodyAudio1, 1)
+            setExtraVolume(audioList.bodyAudio1, 4)
 
             for (let i = 0; i < timerList.length; i++)
                 clearTimeout(timerList[i])

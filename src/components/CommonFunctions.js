@@ -157,8 +157,8 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
     sharePrePath = './'
 } else {
     // production code
-    sharePrePath = './'
-    // sharePrePath = './ee03_md_hwad_ex/'
+    // sharePrePath = './'
+    sharePrePath = './ee03_md_hwad_ex/'
 }
 
 export const prePathUrl = () => sharePrePath;
@@ -184,7 +184,7 @@ export function setRepeatType(type) {
     repeatType = type
 }
 
-export function startRepeatAudio(pastTime = 7000, intervalTime = 10000) {
+export function startRepeatAudio(pastTime = 0, intervalTime = 15000) {
 
     clearTimeout(repeartTimer)
     clearInterval(repeatInterval)

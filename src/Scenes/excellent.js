@@ -2,7 +2,7 @@ import React, { useContext, useRef, useEffect } from 'react';
 import "../stylesheets/styles.css";
 import { UserContext } from "../components/BaseShot"
 import { isIOS } from "react-device-detect";
-import { setExtraVolume, setRepeatAudio, startRepeatAudio, stopRepeatAudio } from "../components/CommonFunctions"
+import { setExtraVolume, setRepeatAudio, setRepeatType, startRepeatAudio, stopRepeatAudio } from "../components/CommonFunctions"
 import { prePathUrl } from "../components/CommonFunctions";
 
 let timerList = []
@@ -14,7 +14,11 @@ export default function Scene18({ nextFunc, _geo, _baseGeo }) {
     useEffect(() => {
 
         audioList.bodyAudio1.src = prePathUrl() + "sounds/effect/excellent.mp3"
+
         setRepeatAudio(audioList.replayAudio)
+        setExtraVolume(audioList.replayAudio, 3)
+        
+        setRepeatType(2)
 
         timerList[0] = setTimeout(() => {
             audioList.clapAudio.pause();
@@ -34,7 +38,7 @@ export default function Scene18({ nextFunc, _geo, _baseGeo }) {
 
 
         timerList[1] = setTimeout(() => {
-            audioList.backAudio.volume = 0.06;
+            audioList.backAudio.volume = 0.01;
 
             audioList.yeahAudio.volume = 0.2
             audioList.clapAudio.volume = 0.4
@@ -44,7 +48,7 @@ export default function Scene18({ nextFunc, _geo, _baseGeo }) {
             startRepeatAudio()
 
             timerList[3] = setTimeout(() => {
-                audioList.backAudio.volume = 0.12;
+                audioList.backAudio.volume = 0.2;
                 audioList.yeahAudio.volume = 0.4
                 audioList.clapAudio.volume = 0.8
 
@@ -71,7 +75,7 @@ export default function Scene18({ nextFunc, _geo, _baseGeo }) {
 
             audioList.replayAudio.pause();
 
-            audioList.backAudio.volume = 0.12;
+            audioList.backAudio.volume = 0.2;
             audioList.yeahAudio.volume = 0.4
             audioList.clapAudio.volume = 0.8
         }
@@ -127,7 +131,7 @@ export default function Scene18({ nextFunc, _geo, _baseGeo }) {
 
                         width={"100%"}
                         draggable={false}
-                        src={prePathUrl() + 'images/Buttons/Replay_Blue.svg'}
+                        src={prePathUrl() + 'images/buttons/replay_blue.svg'}
                     />
                 </div>
             </div>
