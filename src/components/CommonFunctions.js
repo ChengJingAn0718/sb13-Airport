@@ -157,8 +157,8 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
     sharePrePath = './'
 } else {
     // production code
-    // sharePrePath = './'
-    sharePrePath = './ee03_md_hwad_ex/'
+    sharePrePath = './'
+    // sharePrePath = './ee03_md_hwad_ex/'
 }
 
 export const prePathUrl = () => sharePrePath;
