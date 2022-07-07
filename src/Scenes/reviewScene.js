@@ -30,18 +30,18 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
     const [isSceneLoad, setSceneLoad] = useState(false)
 
     const textPosList = [
-        { s: 0.17, l: 0.10, t: 0.46 },
-        { s: 0.19, l: 0.41, t: 0.47 },
-        { s: 0.25, l: 0.72, t: 0.465 },
+        { s: 0.17, l: 0.115, t: 0.46 },
+        { s: 0.2, l: 0.41, t: 0.46 },
+        { s: 0.25, l: 0.7, t: 0.465 },
 
-        { s: 0.20, l: 0.1, t: 0.76 },
-        { s: 0.16, l: 0.42, t: 0.77 },
-        { s: 0.21, l: 0.73, t: 0.76 },
+        { s: 0.21, l: 0.115, t: 0.77 },
+        { s: 0.16, l: 0.415, t: 0.77 },
+        { s: 0.21, l: 0.71, t: 0.77 },
 
-        { s: 0.2, l: 0.1, t: 0.46 },
-        { s: 0.16, l: 0.6, t: 0.46 },
-        { s: 0.22, l: 0.1, t: 0.765 },
-        { s: 0.27, l: 0.6, t: 0.765 },
+        { s: 0.2, l: 0.14, t: 0.46 },
+        { s: 0.16, l: 0.64, t: 0.46 },
+        { s: 0.22, l: 0.14, t: 0.765 },
+        { s: 0.27, l: 0.64, t: 0.765 },
     ]
 
     const baseObject = useRef()
@@ -170,7 +170,7 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
                     { key: 'transition', value: '0.6s' },
                 ])
                 if (clickedNum == 2 || clickedNum == 5) {
-                    pictureBody.current.style.transform = 'translateX(' + _geo.width * -0.1 + 'px)'
+                    pictureBody.current.style.transform = 'translateX(' + _geo.width * -0.06 + 'px)'
                     pictureBody.current.style.transition = '0.6s'
                 }
 
@@ -220,9 +220,9 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
 
         let value = 0;
         if (index < 6)
-            value = 0.02 + (index % 3) * 0.31
+            value = 0.04 + (index % 3) * 0.29
         else
-            value = 0.02 + (index % 2) * 0.5
+            value = 0.05 + (index % 2) * 0.5
         return value
     }
 
@@ -280,7 +280,8 @@ const Scene = React.forwardRef(({ nextFunc, _baseGeo, _geo }, ref) => {
                                 (isLoadLast || index < 6) &&
                                 <div
                                     style={{
-                                        position: 'absolute', width: textPosList[index].s * 100 + '%',
+                                        position: 'absolute',
+                                         width: textPosList[index].s * 100 + '%',
                                         height: '15%', left: textPosList[index].l * 100 + '%',
                                         top: textPosList[index].t * 100 + '%',
                                         overflow: 'hidden',
